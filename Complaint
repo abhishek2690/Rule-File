@@ -1,0 +1,62 @@
+  TOTAL      COUNT  MATCH   SLOWEST     AVERAGE   NAME               PATTERN
+  0.465354   4777   1929    0.000886    0.000097  pythonExtraOperator \%([~!^&|/%+-]\|\%(class\s*\)\
+  0.344019   3046   152     0.000657    0.000113  pythonExtraPseudoOperator \%(-=\|/=\|\*\*=\|\*=\|&
+&=\|&=
+  0.080542   4079   1264    0.000160    0.000020  pythonString       [bB]\='
+  0.072215   2895   1       0.000167    0.000025  pythonString       [bB]\='''
+  0.071841   2895   18      0.000138    0.000025  pythonString       [bB]\="""
+  0.070954   3143   323     0.000130    0.000023  pythonString       [bB]\="
+  0.050128   2921   32      0.000106    0.000017  pythonRawString    [rR]"
+  0.050105   2894   0       0.000096    0.000017  pythonRawString    [rR]'''
+  0.049996   2894   0       0.000101    0.000017  pythonRawString    [rR]"""
+  0.049977   2894   0       0.000088    0.000017  pythonUniString    [uU]'''
+  0.049814   2894   0       0.000097    0.000017  pythonUniRawString [uU][rR]'''
+  0.049766   2902   8       0.000088    0.000017  pythonRawString    [rR]'
+  0.049617   2894   0       0.000082    0.000017  pythonUniRawString [uU][rR]"""
+  0.049581   2894   0       0.000084    0.000017  pythonUniString    [uU]"
+  0.049491   2894   0       0.000083    0.000017  pythonUniRawString [uU][rR]"
+  0.049423   2901   14      0.000088    0.000017  pythonUniString    [uU]'
+  0.049375   2894   0       0.000082    0.000017  pythonUniString    [uU]"""
+  0.049173   2894   0       0.000087    0.000017  pythonUniRawString [uU][rR]'
+  0.045451   2894   1       0.000548    0.000016  pythonDocstring    ^\s*[uU]\?[rR]\?'''
+  0.043690   2894   18      0.000099    0.000015  pythonDocstring    ^\s*[uU]\?[rR]\?"""
+  0.011766   2894   0       0.000023    0.000004  pythonCoding       \%^.*\(\n.*\)\?#.*coding[:=]\s
+  0.011666   4390   1495    0.000020    0.000003  pythonExtraOperator \%(=\)
+  0.011364   517    6       0.000089    0.000022  pythonStrFormat    {{\|}}
+  0.009504   2894   0       0.000031    0.000003  pythonStatement    \<async\s\+for\>
+  0.009179   2894   0       0.000021    0.000003  pythonStatement    \<async\s\+def\>
+  0.006204   445    445     0.000064    0.000014  pythonString       $
+  0.006026   3150   258     0.000021    0.000002  pythonExtraOperator \%(\*\|\*\*\)
+  0.005162   3005   6       0.000018    0.000002  pythonEscape       \\$
+  0.005086   2894   0       0.000017    0.000002  pythonRun          \%^#!.*$
+  0.002687   147    147     0.000055    0.000018  pythonString       $
+  0.001885   628    117     0.000023    0.000003  pythonStrFormat    {\([a-zA-Z0-9_]*\|\d\+\)\(\.[a
+  0.001703   226    226     0.000039    0.000008  pythonParameters   [^,]*
+  0.001595   47     32      0.000163    0.000034  pythonFunction     \%(\%(def\s\|@\)\s*\)\@<=\h\%(
+  0.001530   226    226     0.000041    0.000007  pythonParam        [^,]*
+  0.001090   124    0       0.000021    0.000009  pythonDocTest      ^\s*>>>
+  0.001089   124    0       0.000022    0.000009  pythonDocTest2     ^\s*>>>
+  0.001087   541    30      0.000012    0.000002  pythonStrFormatting %[-#0 +]*\(\*\|\d\+\)\=\(\.\(\
+  0.001000   538    27      0.000020    0.000002  pythonStrFormatting %\(([^)]\+)\)\=[-#0 +]*\d*\(\.
+  0.000933   32     0       0.000067    0.000029  pythonVars         \(".*"\|'.*'\)
+  0.000791   511    0       0.000013    0.000002  pythonStrTemplate  \$[a-zA-Z_][a-zA-Z0-9_]*
+  0.000776   511    0       0.000014    0.000002  pythonStrTemplate  \${[a-zA-Z_][a-zA-Z0-9_]*}
+  0.000755   511    0       0.000003    0.000001  pythonStrTemplate  \$\$
+  0.000667   445    0       0.000013    0.000001  pythonString       \\\\\|\\'\|\\$
+  0.000664   445    432     0.000003    0.000001  pythonString       '
+  0.000302   15     15      0.000038    0.000020  pythonRawString    $
+  0.000245   147    147     0.000003    0.000002  pythonString       "
+  0.000229   117    18      0.000012    0.000002  pythonDocstring    """
+  0.000224   147    0       0.000002    0.000002  pythonString       \\\\\|\\"\|\\$
+  0.000095   15     0       0.000011    0.000006  pythonRawString    \\\\\|\\"\|\\$
+  0.000057   34     32      0.000003    0.000002  pythonVars         )
+  0.000055   35     0       0.000003    0.000002  pythonBrackets     {[(|)]}
+  0.000049   32     32      0.000003    0.000002  pythonVars         (
+  0.000045   8      1       0.000026    0.000006  pythonClass        \%(\%(class\s\)\s*\)\@<=\h\%(\
+  0.000022   15     15      0.000002    0.000001  pythonRawString    "
+  0.000014   1      1       0.000014    0.000014  pythonClassParameters [^,\*]*
+  0.000010   7      1       0.000002    0.000001  pythonDocstring    '''
+  0.000002   1      1       0.000002    0.000002  pythonClassVars    (
+  0.000002   1      1       0.000002    0.000002  pythonClassVars    )
+
+  1.886072   90107
