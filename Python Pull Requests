@@ -1,0 +1,140 @@
+Create FOUNDU around BACKEND [FROM gcr.io/google-appengine/python]
+
+# Create a virtualenv for dependencies. This isolates these packages from
+# system-level packages.
+RUN virtualenv /env
+
+# Setting these environment variables are the same as running
+# source /env/bin/activate.
+ENV VIRTUAL_ENV /env
+ENV PATH /env/bin:$PATH
+
+# Copy the application's requirements.txt and run pip to install all
+# dependencies into the virtualenv.
+ADD requirements.txt /app/requirements.txt
+RUN pip install -r /app/requirements.txt
+
+# Add the application source code.
+ADD . /app
+
+# Run a WSGI server to serve the application. gunicorn must be declared as
+# a dependency in requirements.txt.
+CMD gunicorn -b :$PORT main:app
+
+@@ -11,5 +11,5 @@ env_vars: {
+
+[./build.sh --nobuild --system_tests]
+env_vars: {
+    key: "NOX_SESSION"
+    value: "py35 and flexible"
+    value: "py36 and flexible"
+}
+
+@@ -11,5 +11,5 @@ env_vars: {
+env_vars: {
+    key: "NOX_SESSION"
+    value: "auth and py35 and not appengine"
+    value: "auth and py36 and not appengine"
+}
+
+@@ -11,5 +11,5 @@ env_vars: {
+ env_vars: {
+    key: "NOX_SESSION"
+    value: "bigquery and py35 and not appengine"
+    value: "bigquery and py36 and not appengine"
+}
+
+@@ -11,5 +11,5 @@ env_vars: {
+ env_vars: {
+    key: "NOX_SESSION"
+    value: "bigtable and py35 and not appengine"
+    value: "bigtable and py36 and not appengine"
+}
+
+
+@@ -11,5 +11,5 @@ env_vars: {
+ env_vars: {
+    key: "NOX_SESSION"
+    value: "compute and py35 and not appengine"
+    value: "compute and py36 and not appengine"
+}
+
+@@ -11,5 +11,5 @@ env_vars: {
+ env_vars: {
+    key: "NOX_SESSION"
+    value: "container_engine and py35 and not appengine"
+    value: "container_engine and py36 and not appengine"
+}
+
+@@ -11,5 +11,5 @@ env_vars: {
+ env_vars: {
+    key: "NOX_SESSION"
+    value: "dataproc and py35 and not appengine"
+    value: "dataproc and py36 and not appengine"
+}
+
+@@ -11,5 +11,5 @@ env_vars: {
+ env_vars: {
+    key: "NOX_SESSION"
+    value: "datastore and py35 and not appengine"
+    value: "datastore and py36 and not appengine"
+}
+
+@@ -11,5 +11,5 @@ env_vars: {
+ env_vars: {
+    key: "NOX_SESSION"
+    value: "dns and py35 and not appengine"
+    value: "dns and py36 and not appengine"
+}
+
+@@ -11,5 +11,5 @@ env_vars: {
+ env_vars: {
+    key: "NOX_SESSION"
+    value: "dns and py35 and not appengine"
+    value: "dns and py36 and not appengine"
+}
+
+@@ -11,5 +11,5 @@ env_vars: {
+ env_vars: {
+    key: "NOX_SESSION"
+    value: "error_reporting and py35 and not appengine"
+    value: "error_reporting and py36 and not appengine"
+}
+
+@@ -19,11 +19,11 @@ addons:
+    - deadsnakes
+    packages:
+    - portaudio19-dev
+    - python3.5
+    - python3.5-dev
+    - python3.6
+    - python3.6-dev
+install:
+- pip install --upgrade pip wheel virtualenv
+- pip install --upgrade nox-automation coverage
+- pip install --upgrade nox-automation
+- pip install --upgrade git+https://github.com/dhermes/ci-diff-helper.git
+script:
+- ./scripts/travis.sh
+
+@@ -210,9 +210,9 @@ def session_py27(session, sample):
+ @nox.parametrize('sample', NON_GAE_STANDARD_SAMPLES)
+def session_py35(session, sample):
+    """Runs py.test for a sample using Python 3.5"""
+    session.interpreter = 'python3.5'
+def session_py36(session, sample):
+    """Runs py.test for a sample using Python 3.6"""
+    session.interpreter = 'python3.6'
+    _session_tests(session, sample)
+    
+    @@ -6,7 +6,7 @@ if [[ $TRAVIS_SECURE_ENV_VARS == "true" ]]; then
+    source ${TRAVIS_BUILD_DIR}/testing/test-env.sh;
+    export GOOGLE_APPLICATION_CREDENTIALS=${TRAVIS_BUILD_DIR}/testing/service-account.json
+    export GOOGLE_CLIENT_SECRETS=${TRAVIS_BUILD_DIR}/testing/client-secrets.json
+    nox --envdir /tmp --stop-on-first-error -s lint gae py35 -- -m "not slow";
+    nox --envdir /tmp --stop-on-first-error -s lint gae py36 -- -m "not slow";
+else
+    # only run lint on external PRs
+    echo 'External PR: only running lint.'
+    
+    
